@@ -11,5 +11,15 @@ pipeline {
 		sh 'mvn -B -DskipTests clean package'
 	    }
 	}
+	stage('Testy vashy HUETA') {
+	    steps {
+		sh 'mvn test'
+	    }
+	    post {
+		always {
+		    junit 'target/surefile-reports/*.xml'
+		}
+	    }
+	}
     }
 }
